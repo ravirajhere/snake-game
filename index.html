@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Snake — Nokia Edition · Ravi Raj</title>
+    <meta name="description" content="Classic Nokia Snake game. Hand-written HTML, CSS, JavaScript. No frameworks." />
+    <meta name="author" content="Ravi Raj" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <link rel="canonical" href="https://ravirajhere-snake.vercel.app/" />
+
+    <meta property="og:title" content="Snake — Nokia Edition" />
+    <meta property="og:description" content="Classic Nokia Snake. Hand-written. No frameworks." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ravirajhere-snake.vercel.app/" />
+    <meta name="twitter:card" content="summary" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐍</text></svg>" />
+
+    <link rel="stylesheet" href="css/snake.css" />
+</head>
+<body>
+
+    <main class="game-shell">
+
+        <!-- ========== HEADER ========== -->
+        <header class="game-header">
+            <a href="https://ravirajhere.vercel.app" class="back-link" target="_blank" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M11 7H3M3 7L7 3M3 7L7 11" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Portfolio</span>
+            </a>
+            <h1 class="game-title">SNAKE</h1>
+            <p class="game-subtitle">Nokia Edition · Hand-written</p>
+        </header>
+
+        <!-- ========== PHONE FRAME ========== -->
+        <div class="phone-frame">
+            <div class="phone-screen">
+
+                <!-- HUD -->
+                <div class="hud" id="hud">
+                    <div class="hud-item">
+                        <span class="hud-label">SCORE</span>
+                        <span class="hud-value" id="score">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">BEST</span>
+                        <span class="hud-value" id="highScore">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">LEVEL</span>
+                        <span class="hud-value" id="level">1</span>
+                    </div>
+                </div>
+
+                <!-- CANVAS -->
+                <div class="canvas-wrap">
+                    <canvas id="gameCanvas" width="400" height="400" aria-label="Snake game board"></canvas>
+
+                    <!-- OVERLAYS -->
+                    <div class="overlay" id="startOverlay">
+                        <div class="overlay-content">
+                            <p class="overlay-title">SNAKE</p>
+                            <p class="overlay-sub">Use arrow keys / WASD</p>
+                            <p class="overlay-sub">Or swipe / tap on mobile</p>
+                            <button type="button" class="btn btn-primary" id="startBtn">PRESS START</button>
+                            <p class="overlay-hint">Space to pause · R to restart</p>
+                        </div>
+                    </div>
+
+                    <div class="overlay" id="pauseOverlay" hidden>
+                        <div class="overlay-content">
+                            <p class="overlay-title">PAUSED</p>
+                            <button type="button" class="btn btn-primary" id="resumeBtn">RESUME</button>
+                            <p class="overlay-hint">Space to resume</p>
+                        </div>
+                    </div>
+
+                    <div class="overlay" id="gameOverOverlay" hidden>
+                        <div class="overlay-content">
+                            <p class="overlay-title">GAME OVER</p>
+                            <p class="overlay-score">Score: <span id="finalScore">0</span></p>
+                            <p class="overlay-best" id="finalBest"></p>
+                            <button type="button" class="btn btn-primary" id="restartBtn">PLAY AGAIN</button>
+                            <p class="overlay-hint">R to restart</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DIFFICULTY -->
+                <div class="difficulty" id="difficulty" role="group" aria-label="Difficulty">
+                    <button type="button" class="diff-btn" data-speed="180">EASY</button>
+                    <button type="button" class="diff-btn is-active" data-speed="120">NORMAL</button>
+                    <button type="button" class="diff-btn" data-speed="80">HARD</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========== TOUCH CONTROLS (mobile) ========== -->
+        <div class="touch-controls" id="touchControls" aria-label="Touch controls">
+            <div class="dpad">
+                <button type="button" class="dpad-btn dpad-up" data-dir="up" aria-label="Up">▲</button>
+                <button type="button" class="dpad-btn dpad-left" data-dir="left" aria-label="Left">◀</button>
+                <button type="button" class="dpad-btn dpad-right" data-dir="right" aria-label="Right">▶</button>
+                <button type="button" class="dpad-btn dpad-down" data-dir="down" aria-label="Down">▼</button>
+            </div>
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="game-footer">
+            <p>Built by hand · No frameworks · © 2026 Ravi Raj</p>
+            <p><a href="https://ravirajhere.vercel.app" target="_blank" rel="noopener noreferrer">ravirajhere.vercel.app</a></p>
+        </footer>
+
+    </main>
+
+    <script src="js/snake.js" defer></script>
+
+</body>
+</html>
